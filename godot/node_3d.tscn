@@ -1,0 +1,124 @@
+[gd_scene load_steps=8 format=3 uid="uid://c788w3s07k5w0"]
+
+[ext_resource type="Script" path="res://node_3d.gd" id="1_25mps"]
+[ext_resource type="ArrayMesh" uid="uid://b1xmch7bafij4" path="res://tinker.obj" id="1_k21wk"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_x06s5"]
+size = Vector2(100, 100)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_d8k5r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2jw7d"]
+metallic = 1.0
+metallic_specular = 1.0
+
+[sub_resource type="Environment" id="Environment_oclfo"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_porra"]
+outline_size = 6
+
+[node name="MainScene" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.10839)
+script = ExtResource("1_25mps")
+
+[node name="floor" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.999914, 0.013107, 0, -0.013107, 0.999914, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_x06s5")
+
+[node name="table" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, 0)
+mesh = ExtResource("1_k21wk")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -0.00654494, 0.999979, 0, -0.999979, -0.00654494, -0.471491, 5.71764, 0)
+light_energy = 5.69
+spot_range = 7.835
+
+[node name="cylinder" type="MeshInstance3D" parent="."]
+transform = Transform3D(-4.37114e-09, -2, 0, 0.1, -8.74228e-08, 0, 0, 0, 0.1, -0.636515, 1.46742, 0.595198)
+mesh = SubResource("CylinderMesh_d8k5r")
+surface_material_override/0 = SubResource("StandardMaterial3D_2jw7d")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.815572, 0.578655, 0, -0.578655, 0.815572, -0.489934, 2.41961, 3.24788)
+environment = SubResource("Environment_oclfo")
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="initial_temp" type="LineEdit" parent="CanvasLayer"]
+offset_left = 11.0
+offset_top = 488.0
+offset_right = 205.0
+offset_bottom = 527.0
+
+[node name="Label" type="Label" parent="CanvasLayer/initial_temp"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -29.0
+offset_right = 42.0
+offset_bottom = -6.0
+text = "Initial Temperature in ºC:"
+
+[node name="initial_length" type="LineEdit" parent="CanvasLayer"]
+offset_left = 259.0
+offset_top = 589.0
+offset_right = 453.0
+offset_bottom = 628.0
+
+[node name="Label" type="Label" parent="CanvasLayer/initial_length"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -29.0
+offset_right = 42.0
+offset_bottom = -6.0
+text = "Initial Length:"
+
+[node name="coefficient" type="LineEdit" parent="CanvasLayer"]
+offset_left = 258.0
+offset_top = 488.0
+offset_right = 452.0
+offset_bottom = 527.0
+
+[node name="Label" type="Label" parent="CanvasLayer/coefficient"]
+layout_mode = 0
+offset_left = -3.0
+offset_top = -29.0
+offset_right = 188.0
+offset_bottom = -6.0
+text = "Coefficient of Expansion:"
+
+[node name="final_temp" type="LineEdit" parent="CanvasLayer"]
+offset_left = 11.0
+offset_top = 589.0
+offset_right = 205.0
+offset_bottom = 628.0
+
+[node name="Label" type="Label" parent="CanvasLayer/final_temp"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = -29.0
+offset_right = 42.0
+offset_bottom = -6.0
+text = "Final Temperature in ºC:"
+
+[node name="outputLabel" type="Label" parent="CanvasLayer"]
+offset_left = 889.0
+offset_top = 503.0
+offset_right = 1092.0
+offset_bottom = 528.0
+text = "Final Length: "
+
+[node name="output" type="Label" parent="CanvasLayer"]
+offset_left = 891.0
+offset_top = 536.0
+offset_right = 1094.0
+offset_bottom = 625.0
+label_settings = SubResource("LabelSettings_porra")
+
+[node name="simulate" type="Button" parent="CanvasLayer"]
+offset_left = 557.0
+offset_top = 530.0
+offset_right = 717.0
+offset_bottom = 575.0
+text = "Simulate"
