@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c788w3s07k5w0"]
+[gd_scene load_steps=12 format=3 uid="uid://c788w3s07k5w0"]
 
 [ext_resource type="Script" path="res://node_3d.gd" id="1_25mps"]
 [ext_resource type="ArrayMesh" uid="uid://b1xmch7bafij4" path="res://tinker.obj" id="1_k21wk"]
@@ -14,8 +14,24 @@ metallic_specular = 1.0
 
 [sub_resource type="Environment" id="Environment_oclfo"]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6vit1"]
+bg_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax8pj"]
+bg_color = Color(0.662452, 0.662452, 0.662452, 1)
+
 [sub_resource type="LabelSettings" id="LabelSettings_porra"]
 outline_size = 6
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnaqo"]
+bg_color = Color(0.310109, 0.690422, 0.402237, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hadwc"]
+bg_color = Color(0.988108, 0, 0.250081, 1)
 
 [node name="MainScene" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.10839)
@@ -46,79 +62,125 @@ current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
-[node name="initial_temp" type="LineEdit" parent="CanvasLayer"]
-offset_left = 11.0
-offset_top = 488.0
-offset_right = 205.0
-offset_bottom = 527.0
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+offset_left = 29.0
+offset_top = 20.0
+offset_right = 571.0
+offset_bottom = 627.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6vit1")
 
-[node name="Label" type="Label" parent="CanvasLayer/initial_temp"]
+[node name="Panel" type="Panel" parent="CanvasLayer/Panel"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -29.0
-offset_right = 42.0
-offset_bottom = -6.0
+offset_left = 19.0
+offset_top = 24.0
+offset_right = 524.0
+offset_bottom = 77.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_ax8pj")
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -176.5
+offset_top = -17.0
+offset_right = 176.5
+offset_bottom = 17.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 24
+text = "Thermal Expansion Simulation
+"
+
+[node name="initial_temp" type="LineEdit" parent="CanvasLayer/Panel"]
+offset_left = 283.0
+offset_top = 292.0
+offset_right = 483.0
+offset_bottom = 332.0
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/initial_temp"]
+layout_mode = 0
+offset_left = -230.0
+offset_right = -30.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Initial Temperature in ºC:"
 
-[node name="initial_length" type="LineEdit" parent="CanvasLayer"]
-offset_left = 259.0
-offset_top = 589.0
-offset_right = 453.0
-offset_bottom = 628.0
+[node name="initial_length" type="LineEdit" parent="CanvasLayer/Panel"]
+offset_left = 283.0
+offset_top = 212.0
+offset_right = 483.0
+offset_bottom = 252.0
 
-[node name="Label" type="Label" parent="CanvasLayer/initial_length"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/initial_length"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -29.0
-offset_right = 42.0
-offset_bottom = -6.0
+offset_left = -230.0
+offset_right = -124.0
+offset_bottom = 30.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Initial Length:"
 
-[node name="coefficient" type="LineEdit" parent="CanvasLayer"]
-offset_left = 258.0
-offset_top = 488.0
-offset_right = 452.0
-offset_bottom = 527.0
+[node name="coefficient" type="LineEdit" parent="CanvasLayer/Panel"]
+offset_left = 283.0
+offset_top = 132.0
+offset_right = 483.0
+offset_bottom = 172.0
 
-[node name="Label" type="Label" parent="CanvasLayer/coefficient"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/coefficient"]
 layout_mode = 0
-offset_left = -3.0
-offset_top = -29.0
-offset_right = 188.0
-offset_bottom = -6.0
-text = "Coefficient of Expansion:"
+offset_left = -230.0
+offset_right = -77.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Material Coeffcient:"
 
-[node name="final_temp" type="LineEdit" parent="CanvasLayer"]
-offset_left = 11.0
-offset_top = 589.0
-offset_right = 205.0
-offset_bottom = 628.0
+[node name="final_temp" type="LineEdit" parent="CanvasLayer/Panel"]
+offset_left = 283.0
+offset_top = 372.0
+offset_right = 483.0
+offset_bottom = 412.0
 
-[node name="Label" type="Label" parent="CanvasLayer/final_temp"]
+[node name="Label" type="Label" parent="CanvasLayer/Panel/final_temp"]
 layout_mode = 0
-offset_left = 2.0
-offset_top = -29.0
-offset_right = 42.0
-offset_bottom = -6.0
+offset_left = -230.0
+offset_right = -30.0
+offset_bottom = 23.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Final Temperature in ºC:"
 
-[node name="outputLabel" type="Label" parent="CanvasLayer"]
-offset_left = 889.0
-offset_top = 503.0
-offset_right = 1092.0
-offset_bottom = 528.0
+[node name="outputLabel" type="Label" parent="CanvasLayer/Panel"]
+offset_left = 83.0
+offset_top = 551.0
+offset_right = 283.0
+offset_bottom = 574.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Final Length: "
 
-[node name="output" type="Label" parent="CanvasLayer"]
-offset_left = 891.0
-offset_top = 536.0
-offset_right = 1094.0
-offset_bottom = 625.0
+[node name="output" type="Label" parent="CanvasLayer/Panel"]
+offset_left = 287.0
+offset_top = 542.0
+offset_right = 490.0
+offset_bottom = 593.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
 label_settings = SubResource("LabelSettings_porra")
 
-[node name="simulate" type="Button" parent="CanvasLayer"]
-offset_left = 557.0
-offset_top = 530.0
-offset_right = 717.0
-offset_bottom = 575.0
+[node name="simulate" type="Button" parent="CanvasLayer/Panel"]
+offset_left = 150.0
+offset_top = 450.0
+offset_right = 250.0
+offset_bottom = 490.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_rnaqo")
 text = "Simulate"
+
+[node name="reset" type="Button" parent="CanvasLayer/Panel"]
+offset_left = 300.0
+offset_top = 450.0
+offset_right = 400.0
+offset_bottom = 490.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_hadwc")
+text = "Reset"
