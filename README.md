@@ -22,3 +22,7 @@ Thermal expansion was chosen as the focus of our simulation due to its ease of v
 ---
 
 **Keywords**: Godot, C++, thermal expansion, physics, simulation, interactive learning, computer engineering, assets, extension.
+
+## Reminders
+- The material coefficient is usually in 1x10^-6 that's why its hardcoded
+- The animation isn't realistically scaled some exageration is done to make the material grow
