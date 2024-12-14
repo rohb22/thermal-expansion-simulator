@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://c788w3s07k5w0"]
+[gd_scene load_steps=11 format=3 uid="uid://dscn8yhquksxi"]
 
 [ext_resource type="Script" path="res://node_3d.gd" id="1_25mps"]
 [ext_resource type="ArrayMesh" uid="uid://b1xmch7bafij4" path="res://tinker.obj" id="1_k21wk"]
@@ -23,9 +23,6 @@ corner_radius_bottom_left = 12
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ax8pj"]
 bg_color = Color(0.662452, 0.662452, 0.662452, 1)
-
-[sub_resource type="LabelSettings" id="LabelSettings_porra"]
-outline_size = 6
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rnaqo"]
 bg_color = Color(0.310109, 0.690422, 0.402237, 1)
@@ -56,7 +53,7 @@ mesh = SubResource("CylinderMesh_d8k5r")
 surface_material_override/0 = SubResource("StandardMaterial3D_2jw7d")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.815572, 0.578655, 0, -0.578655, 0.815572, -0.489934, 2.41961, 3.24788)
+transform = Transform3D(1, 0, 0, 0, 0.998629, 0.0523359, 0, -0.0523359, 0.998629, -3.88, 2.065, 5.945)
 environment = SubResource("Environment_oclfo")
 current = true
 
@@ -96,6 +93,7 @@ text = "Thermal Expansion Simulation
 "
 
 [node name="initial_temp" type="LineEdit" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 283.0
 offset_top = 292.0
 offset_right = 483.0
@@ -110,6 +108,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Initial Temperature in ºC:"
 
 [node name="initial_length" type="LineEdit" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 283.0
 offset_top = 212.0
 offset_right = 483.0
@@ -124,6 +123,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Initial Length:"
 
 [node name="coefficient" type="LineEdit" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 283.0
 offset_top = 132.0
 offset_right = 483.0
@@ -138,6 +138,7 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Material Coeffcient:"
 
 [node name="final_temp" type="LineEdit" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 283.0
 offset_top = 372.0
 offset_right = 483.0
@@ -151,7 +152,8 @@ offset_bottom = 23.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Final Temperature in ºC:"
 
-[node name="outputLabel" type="Label" parent="CanvasLayer/Panel"]
+[node name="output" type="Label" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 83.0
 offset_top = 551.0
 offset_right = 283.0
@@ -159,15 +161,8 @@ offset_bottom = 574.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Final Length: "
 
-[node name="output" type="Label" parent="CanvasLayer/Panel"]
-offset_left = 287.0
-offset_top = 542.0
-offset_right = 490.0
-offset_bottom = 593.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-label_settings = SubResource("LabelSettings_porra")
-
 [node name="simulate" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 150.0
 offset_top = 450.0
 offset_right = 250.0
@@ -177,6 +172,7 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_rnaqo")
 text = "Simulate"
 
 [node name="reset" type="Button" parent="CanvasLayer/Panel"]
+layout_mode = 0
 offset_left = 300.0
 offset_top = 450.0
 offset_right = 400.0
@@ -184,3 +180,9 @@ offset_bottom = 490.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_styles/normal = SubResource("StyleBoxFlat_hadwc")
 text = "Reset"
+
+[node name="coefficient_dropdown" type="OptionButton" parent="CanvasLayer"]
+offset_left = 635.0
+offset_top = 45.0
+offset_right = 1094.0
+offset_bottom = 120.0
