@@ -53,7 +53,7 @@ mesh = SubResource("CylinderMesh_d8k5r")
 surface_material_override/0 = SubResource("StandardMaterial3D_2jw7d")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.998629, 0.0523359, 0, -0.0523359, 0.998629, -3.88, 2.065, 5.945)
+transform = Transform3D(1, 0, 0, 0, 0.998629, 0.0523359, 0, -0.0523359, 0.998629, -2.415, 2.065, 3.955)
 environment = SubResource("Environment_oclfo")
 current = true
 
@@ -128,15 +128,16 @@ offset_left = 283.0
 offset_top = 132.0
 offset_right = 483.0
 offset_bottom = 172.0
-text = "0.000023"
+text = "23"
 
 [node name="Label" type="Label" parent="CanvasLayer/Panel/coefficient"]
 layout_mode = 0
 offset_left = -230.0
-offset_right = -77.0
-offset_bottom = 23.0
+offset_right = 6.0
+offset_bottom = 34.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Material Coeffcient:"
+text = "Material Coeffcient 
+1x10^-6 ºC:"
 
 [node name="final_temp" type="LineEdit" parent="CanvasLayer/Panel"]
 layout_mode = 0
