@@ -9,20 +9,29 @@ var result_length: float = 0.0
 @onready var cylinder = $cylinder
 
 func _ready() -> void:
-	$CanvasLayer/simulate.pressed.connect(startSimulation)
+	$CanvasLayer/Panel/simulate.pressed.connect(startSimulation)
+	$CanvasLayer/Panel/reset.pressed.connect(resetSimulation)
+	
+func resetSimulation() -> void:
+	$CanvasLayer/Panel/coefficient.text = ""
+	$CanvasLayer/Panel/initial_temp.text = ""
+	$CanvasLayer/Panel/final_temp.text = ""
+	$CanvasLayer/Panel/initial_length.text = ""
+	$CanvasLayer/Panel/output.text = "Final Length: "
+	cylinder.scale = cylinder_ORIG
 
 func startSimulation() -> void:
 	
-	coefficient = $CanvasLayer/coefficient.text.to_float()
-	var initial_temp = $CanvasLayer/initial_temp.text.to_float()
-	var final_temp = $CanvasLayer/final_temp.text.to_float()
+	coefficient = $CanvasLayer/Panel/coefficient.text.to_float()
+	var initial_temp = $CanvasLayer/Panel/initial_temp.text.to_float()
+	var final_temp = $CanvasLayer/Panel/final_temp.text.to_float()
 	temperature = final_temp - initial_temp
-	length = $CanvasLayer/initial_length.text.to_float()
+	length = $CanvasLayer/Panel/initial_length.text.to_float()
 	
 	var expansion = coefficient * temperature * length
 	result_length = length + expansion
 	
-	$CanvasLayer/output.text = "Final Length: %.2f" % result_length
+	$CanvasLayer/Panel/output.text += str(result_length)
 	cylinder.scale = cylinder_ORIG
 	animate(expansion)
 	
