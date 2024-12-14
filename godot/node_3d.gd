@@ -18,22 +18,22 @@ func _ready() -> void:
 func dropdownSelect(index: int) -> void:
 	var selected_metal = dropdown.get_item_text(index)
 	var coefficients = {
-		"Aluminum": 0.000023,
-		"Copper": 0.000016,
-		"Iron": 0.000012,
-		"Silver": 0.000019,
-		"Gold": 0.000014
+		"Aluminum": 23,
+		"Copper": 16,
+		"Iron": 12,
+		"Silver": 19,
+		"Gold": 14
 	}
 	$CanvasLayer/Panel/coefficient.text = str(coefficients[selected_metal])
 
 
 func addMaterials() -> void:
 	var metals = {
-		"Aluminum": 0.000023,
-		"Copper": 0.000016,
-		"Iron": 0.000012,
-		"Silver": 0.000019,
-		"Gold": 0.000014
+		"Aluminum": 23,
+		"Copper": 16,
+		"Iron": 12,
+		"Silver": 19,
+		"Gold": 14
 	}
 	for metal in metals.keys():
 		dropdown.add_item(metal)
@@ -49,7 +49,7 @@ func resetSimulation() -> void:
 
 func startSimulation() -> void:
 	$CanvasLayer/Panel/output.text = "Final Length: "
-	coefficient = $CanvasLayer/Panel/coefficient.text.to_float()
+	coefficient = float("0.0000" + $CanvasLayer/Panel/coefficient.text)
 	var initial_temp = $CanvasLayer/Panel/initial_temp.text.to_float()
 	var final_temp = $CanvasLayer/Panel/final_temp.text.to_float()
 	temperature = final_temp - initial_temp
@@ -62,13 +62,13 @@ func startSimulation() -> void:
 	elif length <= 0:
 		$CanvasLayer/Panel/output.text += "Material length must be greater than 0"
 		return
-	
+	print(coefficient)
 	var expansion = coefficient * temperature * length
 	result_length = length + expansion
 	
 	$CanvasLayer/Panel/output.text += str(result_length)
 	cylinder.scale = cylinder_ORIG
-	animate(expansion)
+	animate(expansion*10**3)
 	
 func animate(expansion:float) -> void:
 	var tween  = create_tween()
@@ -76,6 +76,6 @@ func animate(expansion:float) -> void:
 	var orig_scale = cylinder.scale
 	var updated = Vector3(orig_scale.x, orig_scale.y + expansion / length, orig_scale.z)
 	
-	tween.tween_property(cylinder, "scale", updated, 5.0)
+	tween.tween_property(cylinder, "scale", updated, 2.0)
 	
 	
