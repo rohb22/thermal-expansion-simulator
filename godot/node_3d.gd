@@ -7,10 +7,37 @@ var length: float = 0.0
 var result_length: float = 0.0
 
 @onready var cylinder = $cylinder
+@onready var dropdown = $CanvasLayer/coefficient_dropdown
 
 func _ready() -> void:
+	addMaterials()
+	dropdown.item_selected.connect(dropdownSelect)
 	$CanvasLayer/Panel/simulate.pressed.connect(startSimulation)
 	$CanvasLayer/Panel/reset.pressed.connect(resetSimulation)
+
+func dropdownSelect(index: int) -> void:
+	var selected_metal = dropdown.get_item_text(index)
+	var coefficients = {
+		"Aluminum": 0.000023,
+		"Copper": 0.000016,
+		"Iron": 0.000012,
+		"Silver": 0.000019,
+		"Gold": 0.000014
+	}
+	$CanvasLayer/Panel/coefficient.text = str(coefficients[selected_metal])
+
+
+func addMaterials() -> void:
+	var metals = {
+		"Aluminum": 0.000023,
+		"Copper": 0.000016,
+		"Iron": 0.000012,
+		"Silver": 0.000019,
+		"Gold": 0.000014
+	}
+	for metal in metals.keys():
+		dropdown.add_item(metal)
+
 	
 func resetSimulation() -> void:
 	$CanvasLayer/Panel/coefficient.text = ""
@@ -21,12 +48,20 @@ func resetSimulation() -> void:
 	cylinder.scale = cylinder_ORIG
 
 func startSimulation() -> void:
-	
+	$CanvasLayer/Panel/output.text = "Final Length: "
 	coefficient = $CanvasLayer/Panel/coefficient.text.to_float()
 	var initial_temp = $CanvasLayer/Panel/initial_temp.text.to_float()
 	var final_temp = $CanvasLayer/Panel/final_temp.text.to_float()
 	temperature = final_temp - initial_temp
 	length = $CanvasLayer/Panel/initial_length.text.to_float()
+	
+	if coefficient <= 0:
+		$CanvasLayer/Panel/output.text += "Material expansion must be greater than 0"
+		
+		return
+	elif length <= 0:
+		$CanvasLayer/Panel/output.text += "Material length must be greater than 0"
+		return
 	
 	var expansion = coefficient * temperature * length
 	result_length = length + expansion
