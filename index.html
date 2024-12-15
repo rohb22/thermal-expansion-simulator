@@ -6,14 +6,29 @@
     <link rel="stylesheet" href="style.css">
     <title>Thermal Expansion Simulator</title>
     <style>
-        #godot {
-            width: 100vw;
-            height: 100vh;
+        body {
+          margin: 0;
+          padding: 0;
+          box-sizing: border-box;
         }
-    </style>
+        #container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+      
+        iframe {
+            width: 80vw;
+            height: 100vh;
+          border: none; 
+        }
+      </style>
 </head>
 <body>
     <h1>Thermal Expansion Simulator</h1>
-    <iframe src="godot/build/index.html" id="godot"></iframe>
+    <div id="container"> 
+        <iframe src="godot/build/index.html" id="godot"></iframe>
+    </div>
+    
 </body>
 </html>
