@@ -3,32 +3,159 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
     <title>Thermal Expansion Simulator</title>
     <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
         body {
-          margin: 0;
-          padding: 0;
-          box-sizing: border-box;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
         }
-        #container {
+
+        .header {
+            background: linear-gradient(135deg, #2c3e50, #34495e);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .simulator-container {
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            min-height: 600px;
             display: flex;
-            justify-content: center;
             align-items: center;
+            justify-content: center;
+            border: 2px dashed #ccc;
         }
-      
-        iframe {
-            width: 80vw;
-            height: 100vh;
-          border: none; 
+
+        .simulator-placeholder {
+            text-align: center;
+            color: #666;
         }
-      </style>
+
+        .info-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-card {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-card h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+
+        .info-card p {
+            margin-bottom: 1rem;
+        }
+
+        .instructions {
+            list-style-position: inside;
+            padding-left: 1rem;
+        }
+
+        .instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        .team-section {
+            background: white;
+            border-radius: 10px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-section h2 {
+            color: #2c3e50;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .team-members {
+            text-align: center;
+            font-style: italic;
+            color: #666;
+        }
+
+        @media (max-width: 768px) {
+            .info-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
+<header class="header">
     <h1>Thermal Expansion Simulator</h1>
-    <div id="container"> 
-        <iframe src="godot/build/index.html" id="godot"></iframe>
+    <p>Interactive Physics Learning Tool</p>
+</header>
+
+<main class="container">
+    <div class="simulator-container">
+        <div class="simulator-placeholder">
+            <h2>Simulator App</h2>
+            <p>The interactive thermal expansion simulator will be embedded here</p>
+        </div>
     </div>
-    
+
+    <section class="info-section">
+        <div class="info-card">
+            <h2>About Thermal Expansion</h2>
+            <p>Thermal expansion is the tendency of matter to change its shape, area, and volume in response to a change in temperature. When a substance is heated, its particles begin to move more quickly, maintaining a greater average separation, causing the substance to expand.</p>
+            <p>This simulator helps visualize how different materials expand or contract under varying temperature conditions, making it an excellent tool for understanding this fundamental physics concept.</p>
+        </div>
+
+        <div class="info-card">
+            <h2>How to Use the Simulator</h2>
+            <ol class="instructions">
+                <li>Select a material from the dropdown menu</li>
+                <li>Enter the initial length of your material</li>
+                <li>Input the initial temperature in °C</li>
+                <li>Set the final temperature in °C</li>
+                <li>Click "Simulate" to see the expansion effect</li>
+                <li>Use the "Reset" button to start over</li>
+            </ol>
+        </div>
+    </section>
+
+    <section class="team-section">
+        <h2>Development Team</h2>
+        <div class="team-members">
+            <p>Created by Group 4 - Computer Engineering Students</p>
+            <p>Colegio de Muntinlupa</p>
+        </div>
+    </section>
+</main>
 </body>
 </html>
